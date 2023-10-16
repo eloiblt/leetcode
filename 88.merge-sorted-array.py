@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/merge-sorted-array/?envType=study-plan-v2&envId=top-interview-150
 import unittest
+from typing import List
 
 """
 Logique
@@ -9,15 +10,9 @@ Si on faisait l'inverse, on aurait des zeros à la fin de nums1. En plus, ici m 
 while i2 >= 0 car si les 2 tableaux sont triés, on est ok dès lors qu'on a traité tous les élements de nums2
 """
 
+
 class Solution(object):
-    def merge(self, nums1, m, nums2, n):
-        """
-        :type nums1: List[int]
-        :type m: int
-        :type nums2: List[int]
-        :type n: int
-        :rtype: None Do not return anything, modify nums1 in-place instead.
-        """
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         i1 = m - 1
         i2 = n - 1
         nums1Index = m + n - 1
@@ -31,15 +26,17 @@ class Solution(object):
                 i2 = i2 - 1
             nums1Index -= 1
 
+
 def check(nums1, m, nums2, n, result):
     Solution().merge(nums1, m, nums2, n)
     unittest.TestCase().assertEqual(nums1, result)
+
 
 nums1 = [1, 2, 3, 0, 0, 0]
 m = 3
 nums2 = [2, 5, 6]
 n = 3
-result = [1,2,2,3,5,6]
+result = [1, 2, 2, 3, 5, 6]
 
 check(nums1, m, nums2, n, result)
 

@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/?envType=study-plan-v2&envId=top-interview-150
+# https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/?envType=study-plan-v2&envId=top-interview-150
 from typing import List
 import unittest
 
@@ -10,10 +10,10 @@ class Solution(object):
 
         i = 0
         while i < len(nums):
-            j = i + 1
+            j = i + 2 if i + 1 < len(nums) and nums[i + 1] == nums[i] else i + 1
             while j < len(nums) and nums[j] == nums[i]:
                 del nums[j]
-            i += 1
+            i = j
         return i
 
 
@@ -23,17 +23,17 @@ def check(nums, kResult, numsResult):
     unittest.TestCase().assertEqual(nums, numsResult)
 
 
-nums = [1, 1, 2]
-kResult = 2
-numsResult = [1, 2]
+nums = [1, 1, 1, 1, 2, 3, 3, 3, 4, 4]
+kResult = 7
+numsResult = [1, 1, 2, 3, 3, 4, 4]
 check(nums, kResult, numsResult)
 
-nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+nums = [1, 1, 1, 2, 2, 3]
 kResult = 5
-numsResult = [0, 1, 2, 3, 4]
+numsResult = [1, 1, 2, 2, 3]
 check(nums, kResult, numsResult)
 
-nums = [1, 1]
-kResult = 1
-numsResult = [1]
+nums = [0, 0, 1, 1, 1, 1, 2, 3, 3]
+kResult = 7
+numsResult = [0, 0, 1, 1, 2, 3, 3]
 check(nums, kResult, numsResult)

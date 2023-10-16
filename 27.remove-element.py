@@ -1,15 +1,10 @@
 # https://leetcode.com/problems/remove-element/description/?envType=study-plan-v2&envId=top-interview-150
+from typing import List
 import unittest
 
 
 class Solution(object):
-    def removeElement(self, nums, val):
-        """
-        :type nums: List[int]
-        :type val: int
-        :rtype: int
-        """
-
+    def removeElement(self, nums: List[int], val: int) -> int:
         k = len([nums[i] for i in range(len(nums)) if nums[i] != val])
 
         i = 0
